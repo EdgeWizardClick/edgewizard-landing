@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeWizard – One-Click Edge Detection</title>
+
+  <style>
+    :root {
+      --color-primary-purple: #7A3FF3;
+      --color-accent-purple: #A87FFC;
+      --color-bg-dark: #0F0F0F;
+
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: rgba(255, 255, 255, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrapper {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .brand {
+      font-size: clamp(2.7rem, 6vw, 3.6rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.8rem;
+    }
+
+    .status {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent-purple);
+      opacity: 0.9;
+    }
+
+    .brand,
+    .subtitle,
+    .status {
+      animation: fadeInUp 0.9s ease-out both;
+    }
+
+    .subtitle {
+      animation-delay: 0.08s;
+    }
+
+    .status {
+      animation-delay: 0.16s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrapper">
+    <h1 class="brand">EdgeWizard</h1>
+    <p class="subtitle">One-Click Edge Detection</p>
+    <p class="status">Coming soon...</p>
+  </main>
+</body>
+</html>

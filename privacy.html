@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeWizard – Privacy Policy</title>
+
+  <style>
+    :root {
+      --color-primary-purple: #7A3FF3;
+      --color-accent-purple: #A87FFC;
+      --color-bg-dark: #0F0F0F;
+
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-surface: #181818;
+      --color-border-subtle: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1.5rem 2.5rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 860px;
+      padding: 2.25rem 2rem;
+      border-radius: 22px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.8rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    p,
+    li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    a {
+      color: var(--color-accent-purple);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 0.9rem 1.5rem 1.4rem;
+      border-top: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    footer a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--color-accent-purple);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.8rem 1.4rem 2.0rem;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">EdgeWizard · Privacy Policy</div>
+  </header>
+
+  <main>
+    <article class="card">
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">
+        This privacy policy explains how personal data is processed when using
+        the EdgeWizard website and application. It is based on Swiss data
+        protection law (nDSG) and, where applicable, the EU General Data
+        Protection Regulation (GDPR).
+      </p>
+
+      <h2>1. Controller</h2>
+      <p>
+        The controller responsible for the processing of personal data is:
+      </p>
+      <p>
+        Raphael König<br />
+        Austrasse 73<br />
+        3176 Neuenegg<br />
+        Switzerland<br />
+        E-mail:
+        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>
+      </p>
+
+      <h2>2. Overview of data processing</h2>
+      <p>
+        EdgeWizard processes as little personal data as possible. Processing mainly
+        serves to provide the application, perform image edge detection,
+        manage credits and enable payment via Stripe.
+      </p>
+
+      <h3>Categories of data processed</h3>
+      <ul>
+        <li>Technical usage and log data (e.g. IP address, time stamps, HTTP headers)</li>
+        <li>Pseudonymous installation identifier (<code>X-Client-Id</code>)</li>
+        <li>Payment-related data transmitted to Stripe for credit purchases</li>
+        <li>Contents of support requests sent by e-mail</li>
+      </ul>
+
+      <h3>Legal bases</h3>
+      <p>
+        Where the GDPR is applicable, the processing is based in particular on:
+      </p>
+      <ul>
+        <li>
+          Art. 6(1)(b) GDPR (performance of a contract and pre-contractual measures), especially
+          for providing the app and credit purchases;
+        </li>
+        <li>
+          Art. 6(1)(f) GDPR (legitimate interests) for security, abuse prevention and
+          stable operation of the infrastructure;
+        </li>
+        <li>
+          Art. 6(1)(c) GDPR (legal obligation), where statutory retention and tax obligations
+          apply to payment data.
+        </li>
+      </ul>
+
+      <h2>3. Provision of the website (GitHub Pages)</h2>
+      <p>
+        The EdgeWizard landing page is hosted using GitHub Pages. When the website is accessed,
+        GitHub (GitHub, Inc. / GitHub B.V.) may process technical log data such as IP address,
+        browser information and time of access in order to provide and secure the service.
+      </p>
+      <p>
+        Further information can be found in GitHub’s privacy policy. The use of GitHub Pages
+        is based on a legitimate interest in a stable and secure hosting environment.
+      </p>
+
+      <h2>4. Use of the EdgeWizard application</h2>
+      <h3>4.1 Pseudonymous installation identifier (X-Client-Id)</h3>
+      <p>
+        Each installation of the EdgeWizard app receives a randomly generated UUID
+        (“X-Client-Id”). This identifier:
+      </p>
+      <ul>
+        <li>is stored locally on the device (e.g. AsyncStorage);</li>
+        <li>is unique per installation;</li>
+        <li>is sent with each request in the HTTP header (<code>X-Client-Id</code>);</li>
+        <li>is used on the server side as a key within the Redis system.</li>
+      </ul>
+      <p>
+        The X-Client-Id does not directly identify a person and serves to manage usage,
+        credits and technical stability in a pseudonymous manner.
+      </p>
+
+      <h3>4.2 Image processing</h3>
+      <p>
+        The core functionality of EdgeWizard is edge detection for images uploaded by users
+        or captured via the device camera.
+      </p>
+      <ul>
+        <li>
+          The images are transmitted temporarily to the backend hosted on Railway in order
+          to perform edge detection.
+        </li>
+        <li>
+          The images are processed solely for this technical purpose and are
+          immediately discarded after processing.
+        </li>
+        <li>
+          The images are not stored permanently, not used for training models and
+          not shared with third parties.
+        </li>
+      </ul>
+      <p>
+        Users remain responsible for the images they upload and must ensure that they have
+        the necessary rights to process the content.
+      </p>
+
+      <h3>4.3 Server infrastructure (Railway & Redis)</h3>
+      <p>
+        The backend and Redis-based storage used to manage technical sessions and X-Client-Ids
+        run on infrastructure provided by Railway. Within Redis, mainly pseudonymous keys and
+        technical usage information are stored in order to operate the service efficiently
+        and securely.
+      </p>
+
+      <h2>5. Payments via Stripe</h2>
+      <p>
+        Credit purchases in EdgeWizard are processed via the payment service provider Stripe.
+        If a payment is initiated, the following data may be transmitted to Stripe:
+      </p>
+      <ul>
+        <li>Payment amount and selected credit package</li>
+        <li>Payment method details (e.g. card information, wallet information)</li>
+        <li>Technical transaction data and fraud-prevention data</li>
+      </ul>
+      <p>
+        Stripe processes these data as an independent controller in accordance with its own
+        privacy policy. The use of Stripe is based on Art. 6(1)(b) GDPR (performance of a
+        contract) and Art. 6(1)(f) GDPR (legitimate interests in secure and reliable payment
+        processing).
+      </p>
+
+      <h2>6. Contact by e-mail</h2>
+      <p>
+        If you contact EdgeWizard via
+        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>,
+        the information you provide (e.g. name, e-mail address, message content)
+        will be processed in order to handle your request. The legal basis is
+        Art. 6(1)(b) GDPR (performance of a contract or pre-contractual measures)
+        or Art. 6(1)(f) GDPR (legitimate interests in processing enquiries).
+      </p>
+
+      <h2>7. Data retention</h2>
+      <ul>
+        <li>
+          <strong>Image data:</strong> Only temporarily processed and deleted immediately
+          after edge detection.
+        </li>
+        <li>
+          <strong>Technical usage data / logs:</strong> Stored only as long as necessary for
+          security, troubleshooting and service stability, then deleted or anonymised.
+        </li>
+        <li>
+          <strong>Payment data:</strong> Stored in accordance with legal retention
+          obligations (e.g. tax law) and then deleted or anonymised.
+        </li>
+        <li>
+          <strong>Support communication:</strong> Stored as long as necessary to process
+          and document the request.
+        </li>
+      </ul>
+
+      <h2>8. No tracking / analytics</h2>
+      <p>
+        EdgeWizard currently does not use web tracking or analytics tools such as
+        Google Analytics, Facebook Pixel or similar services. No marketing profiles are created.
+      </p>
+
+      <h2>9. Data security</h2>
+      <p>
+        Appropriate technical and organisational measures are taken in order to protect data
+        against loss, misuse and unauthorised access. This includes restricted access to
+        infrastructure, encrypted connections (HTTPS) and secure handling of keys and
+        configuration data.
+      </p>
+
+      <h2>10. International data transfers</h2>
+      <p>
+        Due to the use of infrastructure and service providers (e.g. Railway, GitHub, Stripe),
+        data may be processed in states outside Switzerland and the EU/EEA. In such cases,
+        appropriate safeguards (e.g. adequacy decisions, standard contractual clauses) are
+        used to ensure an adequate level of data protection.
+      </p>
+
+      <h2>11. Rights of data subjects</h2>
+      <p>
+        Where the GDPR is applicable, users have in particular the following rights:
+      </p>
+      <ul>
+        <li>Right of access (Art. 15 GDPR)</li>
+        <li>Right to rectification (Art. 16 GDPR)</li>
+        <li>Right to erasure (Art. 17 GDPR)</li>
+        <li>Right to restriction of processing (Art. 18 GDPR)</li>
+        <li>Right to data portability (Art. 20 GDPR)</li>
+        <li>Right to object (Art. 21 GDPR)</li>
+        <li>Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+      </ul>
+      <p>
+        In order to exercise these rights or for general questions about data protection,
+        you can contact:
+        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>.
+      </p>
+
+      <h2>12. Changes to this privacy policy</h2>
+      <p>
+        This privacy policy may be adapted from time to time, for example if EdgeWizard
+        is further developed or if legal requirements change. The current version will
+        always be published at this location.
+      </p>
+
+      <h2>13. Contact</h2>
+      <p>
+        If you have questions regarding this privacy policy or data protection at EdgeWizard,
+        please contact:
+      </p>
+      <p>
+        Raphael König<br />
+        E-mail:
+        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> EdgeWizard · Raphael König</span>
+    <span>·</span>
+    <a href="/index.html">Home</a>
+    <span>·</span>
+    <a href="/imprint.html">Imprint</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

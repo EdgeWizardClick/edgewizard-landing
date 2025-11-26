@@ -2,103 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>EdgeWizard – Clean Line Art from Any Image</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="EdgeWizard converts your images into clean, high-contrast outlines – perfect for vectorization, plotter files, coloring pages and more. Live MVP 1.0.0 with account system, credits and Stripe payments."
-  />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeWizard – One-Click Edge Detection</title>
+
+  <style>
+    :root {
+      --color-primary-purple: #7A3FF3;
+      --color-accent-purple: #A87FFC;
+      --color-bg-dark: #0F0F0F;
+
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-surface: #181818;
+      --color-border-subtle: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem 2.5rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      padding: 2.25rem 2rem;
+      border-radius: 22px;
+      background: radial-gradient(circle at top, #19151f 0, #111111 55%, #0b0b0b 100%);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+      text-align: center;
+    }
+
+    .brand {
+      font-size: clamp(2.7rem, 6vw, 3.4rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.8rem;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 2.2rem;
+      line-height: 1.5;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--color-primary-purple), var(--color-accent-purple));
+      color: #ffffff;
+      font-size: 0.98rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(122, 63, 243, 0.55);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s ease-out;
+    }
+
+    .primary-button span.icon {
+      font-size: 1.1rem;
+      margin-top: -1px;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(168, 127, 252, 0.75);
+      opacity: 0.96;
+    }
+
+    .primary-button:active {
+      transform: translateY(0);
+      box-shadow: 0 0 14px rgba(122, 63, 243, 0.7);
+      opacity: 0.9;
+    }
+
+    .status {
+      margin-top: 1.7rem;
+      font-size: 0.86rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+
+    footer {
+      padding: 0.9rem 1.5rem 1.4rem;
+      border-top: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    footer a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 0.12s ease-out, opacity 0.12s ease-out;
+    }
+
+    footer a:hover {
+      color: var(--color-accent-purple);
+      opacity: 0.95;
+    }
+
+    .card,
+    header,
+    footer {
+      animation: fadeInUp 0.5s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.9rem 1.4rem 2rem;
+        border-radius: 18px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-950 text-white">
-  <div class="min-h-screen flex items-center justify-center px-4">
-    <div class="max-w-2xl w-full bg-gray-900/60 border border-gray-800 rounded-2xl shadow-2xl p-10">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-400 via-sky-400 to-emerald-400 flex items-center justify-center shadow-lg shadow-indigo-500/40">
-          <span class="text-xl font-bold">EW</span>
-        </div>
-        <div>
-          <p class="text-sm uppercase tracking-[0.2em] text-indigo-300/80">EdgeWizard</p>
-          <p class="text-xs text-gray-400">High-Quality Edge Detection for Digital Creators</p>
-          <p class="mt-1 inline-flex items-center gap-2 text-[11px] font-medium text-emerald-300">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
-            Live · MVP 1.0.0 · Account & Credits with Stripe
-          </p>
-        </div>
-      </div>
+<body>
+  <header>
+    <div class="header-title">EdgeWizard</div>
+  </header>
 
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-        Clean Line Art from any Image – in Seconds.
-      </h1>
-
-      <p class="text-gray-300 text-base leading-relaxed mb-6">
-        EdgeWizard turns your regular photos into clean, high-contrast outlines – perfect for vectorization, plotter files, coloring pages and more.
-        You get a personal account with daily free credits plus paid credit bundles via secure Stripe payments.
+  <main>
+    <section class="card" aria-labelledby="brand-heading">
+      <h1 id="brand-heading" class="brand">EdgeWizard</h1>
+      <p class="subtitle">One-Click Edge Detection</p>
+      <p class="tagline">
+        High-end edge detection with clean, precise outlines for creative and technical workflows.
+        High-precision processing may take a few seconds depending on image size.
       </p>
 
-      <div class="flex flex-wrap gap-3 mb-8">
-        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-medium border border-emerald-400/40">
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
-          <span>Real-world tested on complex images</span>
-        </span>
-        <span class="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 text-indigo-200 px-4 py-1 text-xs font-medium border border-indigo-400/40">
-          <span>Optimized for Cricut, Silhouette & Plotter Files</span>
-        </span>
-        <span class="inline-flex items-center gap-2 rounded-full bg-sky-500/10 text-sky-200 px-4 py-1 text-xs font-medium border border-sky-400/40">
-          <span>Ideal for coloring books, KDP & print-on-demand</span>
-        </span>
-      </div>
+      <!-- TODO: Sobald deine produktive App-URL feststeht, hier den Link anpassen -->
+      <a class="primary-button" href="https://image-edge-detect.preview.emergentagent.com" target="_blank" rel="noopener noreferrer">
+        <span class="icon">⚡</span>
+        <span>Open EdgeWizard App</span>
+      </a>
 
-      <div class="bg-gray-900/80 rounded-xl border border-gray-800 p-5 mb-6">
-        <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2 text-sm">
-          <div>
-            <dt class="font-semibold text-gray-100 mb-1">High-Quality Edge Detection</dt>
-            <dd class="text-gray-400">
-              Uses a tuned AI-based image pipeline to generate clean edges, even on noisy or complex backgrounds.
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-gray-100 mb-1">Built for Digital Products</dt>
-            <dd class="text-gray-400">
-              Designed for SVG conversion, cutting machines, coloring pages, KDP interiors and other digital products.
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-gray-100 mb-1">Credit System</dt>
-            <dd class="text-gray-400">
-              Daily free credits for testing plus scalable paid credit bundles – ideal for side hustles and small studios.
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-gray-100 mb-1">Secure Stripe Payments</dt>
-            <dd class="text-gray-400">
-              Payments are handled via Stripe. Your card data never touches EdgeWizard servers.
-            </dd>
-          </div>
-        </dl>
-      </div>
+      <p class="status">Coming soon – MVP 1.0.0</p>
+    </section>
+  </main>
 
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div class="space-y-1 text-sm text-gray-400">
-          <p>Built for creators using:</p>
-          <p class="text-gray-300">
-            Cricut • Silhouette • Procreate • Affinity Designer • Adobe Illustrator • KDP & Coloring Books
-          </p>
-        </div>
-        <a
-          href="https://image-edge-detect.preview.emergentagent.com"
-          class="inline-flex items-center justify-center rounded-full bg-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 hover:bg-indigo-400 transition"
-        >
-          Open EdgeWizard App
-        </a>
-      </div>
+  <footer>
+    <span>© <span id="year"></span> EdgeWizard · Raphael König</span>
+    <span>·</span>
+    <a href="/imprint.html">Imprint</a>
+    <span>·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+    <span>·</span>
+    <a href="mailto:support@edgewizard.click">Contact</a>
+  </footer>
 
-      <div class="mt-8 flex justify-between text-xs text-gray-500">
-        <a href="/privacy.html" class="hover:text-gray-300 transition">Privacy Policy</a>
-        <a href="/imprint.html" class="hover:text-gray-300 transition">Imprint</a>
-      </div>
-
-    </div>
-  </div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

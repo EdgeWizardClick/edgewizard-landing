@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeWizard – Terms of Service</title>
+
+  <style>
+    :root {
+      --color-primary-purple: #7A3FF3;
+      --color-accent-purple: #A87FFC;
+      --color-bg-dark: #0F0F0F;
+
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-surface: #181818;
+      --color-border-subtle: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1.5rem 2.5rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 860px;
+      padding: 2.25rem 2rem;
+      border-radius: 22px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.8rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    p,
+    li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    a {
+      color: var(--color-accent-purple);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 0.9rem 1.5rem 1.4rem;
+      border-top: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    footer a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--color-accent-purple);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.8rem 1.4rem 2.0rem;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">EdgeWizard · Terms of Service</div>
+  </header>
+
+  <main>
+    <article class="card">
+      <h1>Terms of Service</h1>
+      <p class="subtitle">
+        These Terms of Service govern the use of the EdgeWizard application and website.
+        By creating an account or using EdgeWizard, you agree to these terms.
+      </p>
+
+      <h2>1. Provider and scope</h2>
+      <p>
+        The service is provided by:
+      </p>
+      <p>
+        Raphael König<br />
+        Austrasse 73<br />
+        3176 Neuenegg<br />
+        Switzerland<br />
+        E-mail:
+        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>
+      </p>
+      <p>
+        These terms apply to the EdgeWizard mobile application, the web-based backend
+        and the associated landing pages.
+      </p>
+
+      <h2>2. Use of EdgeWizard</h2>
+      <p>
+        EdgeWizard provides a credit-based edge detection service for images supplied
+        by users. Users are responsible for ensuring that they have the necessary rights
+        to process the images they upload.
+      </p>
+      <p>
+        It is prohibited to use EdgeWizard for unlawful content, including but not limited to
+        images that infringe third-party rights, are discriminatory, or violate applicable law.
+      </p>
+
+      <h2>3. Credits and billing</h2>
+      <p>
+        EdgeWizard uses a credit system:
+      </p>
+      <ul>
+        <li>Each edge processing job consumes one credit.</li>
+        <li>Paid credits are purchased via Stripe and are tied to the user account.</li>
+        <li>Paid credits are always consumed before daily free credits.</li>
+      </ul>
+      <p>
+        Prices and available credit bundles are displayed within the app or on the
+        checkout pages. All payments are processed by Stripe; Stripe’s terms and
+        policies apply in addition to these terms.
+      </p>
+
+      <h2>4. Free credits</h2>
+      <p>
+        For testing and low-volume usage, EdgeWizard may provide daily free credits.
+        The amount and availability of free credits can be adjusted or discontinued
+        at any time. Free credits have no monetary value and cannot be refunded or
+        exchanged for cash.
+      </p>
+
+      <h2>5. User accounts and security</h2>
+      <p>
+        Access to EdgeWizard is provided via an e-mail address and password. Users are
+        responsible for keeping their login data confidential and for all activities
+        carried out via their account.
+      </p>
+      <p>
+        EdgeWizard may temporarily block or permanently close accounts if there are
+        indications of misuse, fraud, or material violations of these terms.
+      </p>
+
+      <h2>6. Intellectual property</h2>
+      <p>
+        Unless otherwise stated, all content, designs and branding elements connected
+        with EdgeWizard are protected by copyright and may not be reproduced, edited
+        or used in any other way outside the limits of copyright law without prior
+        written consent.
+      </p>
+
+      <h2>7. Availability and changes to the service</h2>
+      <p>
+        EdgeWizard aims to provide a stable service but cannot guarantee uninterrupted
+        availability. Maintenance work, updates or technical issues may temporarily
+        restrict or interrupt the service.
+      </p>
+      <p>
+        The scope of features, pricing, and technical implementation may be adapted
+        or extended at any time, as long as this is reasonable for users.
+      </p>
+
+      <h2>8. Liability</h2>
+      <p>
+        Liability for slight negligence is excluded to the extent permitted by law.
+        In particular, no liability is assumed for indirect or consequential damages
+        such as loss of profit, data loss or business interruptions.
+      </p>
+      <p>
+        Mandatory statutory liability, for example under product liability law or
+        in cases of wilful intent or gross negligence, remains unaffected.
+      </p>
+
+      <h2>9. Changes to these terms</h2>
+      <p>
+        These Terms of Service may be adapted from time to time, for example if
+        EdgeWizard is further developed or if legal requirements change.
+      </p>
+      <p>
+        The current version will always be published at this location. In the event of
+        material changes, users may be informed within the app or by other appropriate means.
+      </p>
+
+      <h2>10. Governing law and jurisdiction</h2>
+      <p>
+        These terms are governed by Swiss law, excluding its conflict of laws provisions.
+        The place of jurisdiction, to the extent permitted by law, is Neuenegg, Switzerland.
+        Mandatory consumer protection provisions and places of jurisdiction remain reserved.
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> EdgeWizard · Raphael König</span>
+    <span>·</span>
+    <a href="/index.html">Home</a>
+    <span>·</span>
+    <a href="/imprint.html">Imprint</a>
+    <span>·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

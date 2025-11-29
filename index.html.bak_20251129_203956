@@ -98,7 +98,7 @@
       padding: 0.9rem 1.8rem;
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #7A3FF3, #A87FFC);
+      background: linear-gradient(135deg, var(--color-primary-purple), var(--color-accent-purple));
       color: #ffffff;
       font-size: 0.98rem;
       font-weight: 500;
@@ -179,11 +179,6 @@
         border-radius: 18px;
       }
     }
-      .primary-button img.icon {
-      width: 1.1rem;
-      height: 1.1rem;
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -202,7 +197,7 @@
 
       <!-- TODO: Sobald deine produktive App-URL feststeht, hier den Link anpassen -->
       <a class="primary-button" href="https://image-edge-detect.preview.emergentagent.com" target="_blank" rel="noopener noreferrer">
-        <img class="icon" src="./assets/icon/edgewizard-icon.png" alt="EdgeWizard logo" />
+        <span class="icon">⚡</span>
         <span>Open EdgeWizard App</span>
       </a>
 
@@ -227,5 +222,4 @@
   </script>
 </body>
 </html>
-
 

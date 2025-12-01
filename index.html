@@ -126,15 +126,32 @@
       opacity: 0.9;
     }
 
-        .status {
-      margin-top: 1.4rem;
+            .status {
+      margin-top: 1rem;
       font-size: 0.82rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      display: inline-flex;
+      display: flex;
+      justify-content: center;
       align-items: center;
+      width: 100%;
       gap: 0.4rem;
       color: #65ff7a;
+    }
+
+    .status::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: #65ff7a;
+      box-shadow: 0 0 8px rgba(101, 255, 122, 0.8);
+    }
+
+    @media (max-width: 600px) {
+      .status {
+        margin-top: 1.4rem;
+      }
     }
 
     .status::before {
@@ -288,6 +305,7 @@
   </script>
 </body>
 </html>
+
 
 
 

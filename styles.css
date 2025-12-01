@@ -1,0 +1,10 @@
+.primary-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+}
+
+.primary-button .icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}

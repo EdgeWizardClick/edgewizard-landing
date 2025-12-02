@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EdgeWizard "“ Privacy Policy</title>
+  <title>EdgeWizard – Privacy Policy</title>
 
   <style>
     :root {
@@ -12,9 +12,9 @@
       --color-bg-dark: #0F0F0F;
 
       --color-text-primary: #FFFFFF;
-      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-text-secondary: rgba(255, 255, 255, 0.7);
       --color-surface: #181818;
-      --color-border-subtle: rgba(255, 255, 255, 0.08);
+      --color-border-subtle: rgba(255, 255, 255, 0.1);
     }
 
     * {
@@ -128,10 +128,12 @@
     footer a {
       color: var(--color-text-secondary);
       text-decoration: none;
+      transition: color 0.12s ease-out, opacity 0.12s ease-out;
     }
 
     footer a:hover {
       color: var(--color-accent-purple);
+      opacity: 0.95;
     }
 
     @media (max-width: 480px) {
@@ -181,8 +183,9 @@
       <ul>
         <li>Technical usage and log data (e.g. IP address, time stamps, HTTP headers)</li>
         <li>Pseudonymous installation identifier (<code>X-Client-Id</code>)</li>
+        <li>Account data (e-mail address, password hash, credit balance, language settings)</li>
         <li>Payment-related data transmitted to Stripe for credit purchases</li>
-        <li>Contents of support requests sent by e-mail</li>
+        <li>E-mail communication (support requests, password reset and other transactional e-mails)</li>
       </ul>
 
       <h3>Legal bases</h3>
@@ -191,8 +194,8 @@
       </p>
       <ul>
         <li>
-          Art. 6(1)(b) GDPR (performance of a contract and pre-contractual measures), especially
-          for providing the app and credit purchases;
+          Art. 6(1)(b) GDPR (performance of a contract and pre-contractual measures),
+          especially for providing the app, managing accounts and processing credit purchases;
         </li>
         <li>
           Art. 6(1)(f) GDPR (legitimate interests) for security, abuse prevention and
@@ -204,22 +207,27 @@
         </li>
       </ul>
 
-      <h2>3. Provision of the website (GitHub Pages)</h2>
+      <h2>3. Provision of the website and web app (GitHub Pages & Vercel)</h2>
       <p>
-        The EdgeWizard landing page is hosted using GitHub Pages. When the website is accessed,
-        GitHub (GitHub, Inc. / GitHub B.V.) may process technical log data such as IP address,
-        browser information and time of access in order to provide and secure the service.
+        The EdgeWizard landing page at <strong>https://edgewizard.click</strong> is
+        hosted using GitHub Pages. The EdgeWizard web application at
+        <strong>https://app.edgewizard.click</strong> is hosted on infrastructure
+        provided by Vercel.
       </p>
       <p>
-        Further information can be found in GitHub's privacy policy. The use of GitHub Pages
-        is based on a legitimate interest in a stable and secure hosting environment.
+        When these services are accessed, GitHub and Vercel may process technical log data
+        such as IP address, browser information and time of access in order to provide and
+        secure the service. Further information can be found in the respective privacy policies
+        of these providers. The use of GitHub Pages and Vercel is based on a legitimate
+        interest in a stable and secure hosting environment.
       </p>
 
       <h2>4. Use of the EdgeWizard application</h2>
+
       <h3>4.1 Pseudonymous installation identifier (X-Client-Id)</h3>
       <p>
         Each installation of the EdgeWizard app receives a randomly generated UUID
-        ("X-Client-Id"). This identifier:
+        ("X-Client-Id"). This identifier:
       </p>
       <ul>
         <li>is stored locally on the device (e.g. AsyncStorage);</li>
@@ -258,10 +266,19 @@
 
       <h3>4.3 Server infrastructure (Railway & Redis)</h3>
       <p>
-        The backend and Redis-based storage used to manage technical sessions and X-Client-Ids
-        run on infrastructure provided by Railway. Within Redis, mainly pseudonymous keys and
-        technical usage information are stored in order to operate the service efficiently
-        and securely.
+        The backend API and Redis-based storage used to manage sessions, credits and
+        X-Client-Ids run on infrastructure provided by Railway. Within Redis, mainly
+        pseudonymous keys and technical usage information are stored in order to operate
+        the service efficiently and securely.
+      </p>
+
+      <h3>4.4 Transactional e-mails (MailerSend)</h3>
+      <p>
+        Transactional e-mails, such as password reset messages, may be sent via the
+        e-mail service provider MailerSend. For this purpose, the e-mail address and
+        technical information required to deliver the message are transmitted to
+        MailerSend. Processing is based on Art. 6(1)(b) GDPR (contract performance)
+        and Art. 6(1)(f) GDPR (legitimate interests in reliable communication).
       </p>
 
       <h2>5. Payments via Stripe</h2>
@@ -281,14 +298,12 @@
         processing).
       </p>
 
-      <h2>6. Contact by e-mail</h2>
+      <h2>6. Contact and support</h2>
       <p>
-        If you contact EdgeWizard via
-        <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>,
-        the information you provide (e.g. name, e-mail address, message content)
-        will be processed in order to handle your request. The legal basis is
-        Art. 6(1)(b) GDPR (performance of a contract or pre-contractual measures)
-        or Art. 6(1)(f) GDPR (legitimate interests in processing enquiries).
+        If you contact EdgeWizard by e-mail, the information you provide (e.g. name,
+        e-mail address, message content) will be processed in order to handle your request.
+        The legal basis is Art. 6(1)(b) GDPR (performance of a contract or pre-contractual
+        measures) or Art. 6(1)(f) GDPR (legitimate interests in processing enquiries).
       </p>
 
       <h2>7. Data retention</h2>
@@ -302,12 +317,12 @@
           security, troubleshooting and service stability, then deleted or anonymised.
         </li>
         <li>
-          <strong>Payment data:</strong> Stored in accordance with legal retention
-          obligations (e.g. tax law) and then deleted or anonymised.
+          <strong>Account and payment data:</strong> Stored in accordance with legal
+          retention obligations and then deleted or anonymised.
         </li>
         <li>
-          <strong>Support communication:</strong> Stored as long as necessary to process
-          and document the request.
+          <strong>Support and e-mail communication:</strong> Stored as long as necessary to
+          process and document the request.
         </li>
       </ul>
 
@@ -327,10 +342,10 @@
 
       <h2>10. International data transfers</h2>
       <p>
-        Due to the use of infrastructure and service providers (e.g. Railway, GitHub, Stripe),
-        data may be processed in states outside Switzerland and the EU/EEA. In such cases,
-        appropriate safeguards (e.g. adequacy decisions, standard contractual clauses) are
-        used to ensure an adequate level of data protection.
+        Due to the use of infrastructure and service providers (e.g. Vercel, Railway, GitHub,
+        Stripe, MailerSend), data may be processed in states outside Switzerland and the
+        EU/EEA. In such cases, appropriate safeguards (e.g. adequacy decisions, standard
+        contractual clauses) are used to ensure an adequate level of data protection.
       </p>
 
       <h2>11. Rights of data subjects</h2>
@@ -372,7 +387,7 @@
     </article>
   </main>
 
-    <footer>
+  <footer>
     <span>© <span id="year"></span> EdgeWizard · Raphael König</span>
     <span>·</span>
     <a href="/index.html">Home</a>
@@ -387,5 +402,3 @@
   </script>
 </body>
 </html>
-
-

@@ -12,9 +12,9 @@
       --color-bg-dark: #0F0F0F;
 
       --color-text-primary: #FFFFFF;
-      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-text-secondary: rgba(255, 255, 255, 0.7);
       --color-surface: #181818;
-      --color-border-subtle: rgba(255, 255, 255, 0.08);
+      --color-border-subtle: rgba(255, 255, 255, 0.1);
     }
 
     * {
@@ -86,12 +86,6 @@
       margin-bottom: 0.5rem;
     }
 
-    h3 {
-      font-size: 1.02rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.35rem;
-    }
-
     p,
     li {
       font-size: 0.95rem;
@@ -128,10 +122,12 @@
     footer a {
       color: var(--color-text-secondary);
       text-decoration: none;
+      transition: color 0.12s ease-out, opacity 0.12s ease-out;
     }
 
     footer a:hover {
       color: var(--color-accent-purple);
+      opacity: 0.95;
     }
 
     @media (max-width: 480px) {
@@ -151,13 +147,14 @@
     <article class="card">
       <h1>Terms of Service</h1>
       <p class="subtitle">
-        These Terms of Service govern the use of the EdgeWizard application and website.
-        By creating an account or using EdgeWizard, you agree to these terms.
+        These Terms of Service govern the use of the EdgeWizard website
+        (https://edgewizard.click) and the web application (https://app.edgewizard.click).
+        By creating an account or using the service, you agree to these terms.
       </p>
 
       <h2>1. Provider and scope</h2>
       <p>
-        The service is provided by:
+        EdgeWizard is operated by:
       </p>
       <p>
         Raphael König<br />
@@ -168,42 +165,44 @@
         <a href="mailto:support@edgewizard.click">support@edgewizard.click</a>
       </p>
       <p>
-        These terms apply to the EdgeWizard mobile application, the web-based backend
-        and the associated landing pages.
+        These terms apply to all uses of EdgeWizard by registered and unregistered users.
+        Any deviating agreements must be made in writing.
       </p>
 
-      <h2>2. Use of EdgeWizard</h2>
+      <h2>2. Service description</h2>
       <p>
-        EdgeWizard provides a credit-based edge detection service for images supplied
-        by users. Users are responsible for ensuring that they have the necessary rights
-        to process the images they upload.
+        EdgeWizard provides an image edge detection service. Users can upload images or
+        capture them via a device camera. The service processes these images and returns
+        processed edge-detection results.
       </p>
       <p>
-        It is prohibited to use EdgeWizard for unlawful content, including but not limited to
-        images that infringe third-party rights, are discriminatory, or violate applicable law.
+        The service is offered via a web application and may in future be extended to
+        additional platforms. The concrete range of functions may change over time.
       </p>
 
-      <h2>3. Credits and billing</h2>
+      <h2>3. Credits and pricing</h2>
       <p>
-        EdgeWizard uses a credit system:
+        Use of the edge detection is based on a credit system:
       </p>
       <ul>
-        <li>Standard edge processing consumes one credit per job. Enabling the optional Outer Border add-on consumes +1 extra credit per job and creates a clear outer edge around the image.</li>
-        <li>Paid credits are purchased via Stripe and are tied to the user account.</li>
-        <li>Paid credits are always consumed before daily free credits.</li>
+        <li>Each processed image consumes a defined number of credits.</li>
+        <li>Users can purchase credit bundles via the payment provider Stripe.</li>
+        <li>Prices, bundle sizes and included credits are displayed within the app.</li>
       </ul>
       <p>
-        Prices and available credit bundles are displayed within the app or on the
-        checkout pages. All payments are processed by Stripe; Stripe’s terms and
-        policies apply in addition to these terms.
+        Paid credits are tied to the user account and are consumed when images are
+        processed. Credits are not legal tender and cannot be exchanged for cash.
       </p>
 
       <h2>4. Free credits</h2>
       <p>
-        For testing and low-volume usage, EdgeWizard may provide daily free credits.
+        EdgeWizard may provide free credits (for example, a daily contingency or
+        introductory credits) in order to allow users to test the service.
+      </p>
+      <p>
         The amount and availability of free credits can be adjusted or discontinued
         at any time. Free credits have no monetary value and cannot be refunded or
-        exchanged for cash.
+        exchanged for cash. Paid credits, where available, are used before free credits.
       </p>
 
       <h2>5. User accounts and security</h2>
@@ -211,6 +210,10 @@
         Access to EdgeWizard is provided via an e-mail address and password. Users are
         responsible for keeping their login data confidential and for all activities
         carried out via their account.
+      </p>
+      <p>
+        Password reset links are sent only to the registered e-mail address. Users are
+        responsible for choosing a secure password and changing it regularly if needed.
       </p>
       <p>
         Users may delete their account themselves at any time via the in-app account
@@ -241,7 +244,17 @@
         or extended at any time, as long as this is reasonable for users.
       </p>
 
-      <h2>8. Liability</h2>
+      <h2>8. Payments and refunds</h2>
+      <p>
+        Payments for credit bundles are processed exclusively via Stripe. Card and
+        payment data are handled and stored only by Stripe, not on EdgeWizard servers.
+      </p>
+      <p>
+        Unless expressly stated otherwise, payments for consumed credits are
+        non-refundable. Statutory warranty and mandatory consumer rights remain reserved.
+      </p>
+
+      <h2>9. Liability</h2>
       <p>
         Liability for slight negligence is excluded to the extent permitted by law.
         In particular, no liability is assumed for indirect or consequential damages
@@ -252,7 +265,7 @@
         in cases of wilful intent or gross negligence, remains unaffected.
       </p>
 
-      <h2>9. Changes to these terms</h2>
+      <h2>10. Changes to these terms</h2>
       <p>
         These Terms of Service may be adapted from time to time, for example if
         EdgeWizard is further developed or if legal requirements change.
@@ -262,7 +275,7 @@
         material changes, users may be informed within the app or by other appropriate means.
       </p>
 
-      <h2>10. Governing law and jurisdiction</h2>
+      <h2>11. Governing law and jurisdiction</h2>
       <p>
         These terms are governed by Swiss law, excluding its conflict of laws provisions.
         The place of jurisdiction, to the extent permitted by law, is Neuenegg, Switzerland.
@@ -286,6 +299,3 @@
   </script>
 </body>
 </html>
-
-
-

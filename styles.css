@@ -8,3 +8,12 @@
     height: 22px;
     margin-right: 10px;
 }
+
+/* --- Mobile Optimierungen für Tagline --- */
+@media (max-width: 480px) {
+  .tagline {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+}
+

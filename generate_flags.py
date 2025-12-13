@@ -1,24 +1,37 @@
 import json
+import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
 
 # =========================
-# CONFIG
+# CONFIG (portable)
 # =========================
-REPO = Path(r"C:\Users\koeni\OneDrive\Desktop\EdgeWizard\edgewizard-landing")
+REPO = Path(__file__).resolve().parent  # Ordner, wo generate_flags.py liegt
 FLAGS_DIR = REPO / "flags"
 MASTER = FLAGS_DIR / "afghanistan" / "index.html"
 FLAGS_JSON = REPO / "flags.json"  # {"afghanistan":"Afghanistan","andorra":"Andorra",...}
+
+PAUSE_ON_EXIT = True  # hilfreich bei Doppelklick (Windows)
 
 
 # =========================
 # HELPERS
 # =========================
+def pause_if_needed() -> None:
+    if not PAUSE_ON_EXIT:
+        return
+    # Nur sinnvoll, wenn es eine Konsole gibt
+    try:
+        input("\n[Enter] zum Beenden ...")
+    except Exception:
+        pass
+
+
 def run(cmd: List[str], cwd: Path = REPO) -> subprocess.CompletedProcess:
-    """Run a command and raise with useful output on failure."""
     p = subprocess.run(cmd, cwd=str(cwd), text=True, capture_output=True)
     if p.returncode != 0:
         raise RuntimeError(
@@ -32,25 +45,10 @@ def run(cmd: List[str], cwd: Path = REPO) -> subprocess.CompletedProcess:
 
 
 def load_flags_map() -> Dict[str, str]:
-    """Load slug->Country mapping. This is your safety source of truth."""
     if not FLAGS_JSON.exists():
         raise FileNotFoundError(f"flags.json fehlt: {FLAGS_JSON}")
 
-    raw = FLAGS_JSON.read_text(encoding="utf-8")
-
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError as e:
-        # Human-friendly error
-        snippet = raw.splitlines()[max(e.lineno - 3, 0): e.lineno + 2]
-        snippet_text = "\n".join(f"{i+max(e.lineno-2,1):>4}: {line}" for i, line in enumerate(snippet))
-        raise ValueError(
-            "flags.json ist kein gueltiges JSON.\n"
-            f"Fehler: {e.msg} (Zeile {e.lineno}, Spalte {e.colno})\n\n"
-            f"Ausschnitt:\n{snippet_text}\n\n"
-            "Tipp: Häufigster Fehler ist ein Komma nach dem letzten Eintrag."
-        ) from None
-
+    data = json.loads(FLAGS_JSON.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or not data:
         raise ValueError('flags.json muss ein nicht-leeres JSON-Objekt sein: {"slug":"Country", ...}')
 
@@ -72,15 +70,14 @@ def expected_asset_paths(slug: str, country_dir: Path) -> Tuple[Path, Path]:
     return before, after
 
 
-def ensure_assets(slug: str, country_dir: Path) -> List[Path]:
-    """Return list of missing required assets."""
+def missing_assets(slug: str, country_dir: Path) -> List[Path]:
     before, after = expected_asset_paths(slug, country_dir)
-    missing = []
+    miss: List[Path] = []
     if not before.exists():
-        missing.append(before)
+        miss.append(before)
     if not after.exists():
-        missing.append(after)
-    return missing
+        miss.append(after)
+    return miss
 
 
 def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
@@ -91,7 +88,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
         r"<title>.*?</title>",
         f"<title>Flag of {country} – Outline & Coloring Page | EdgeWizard</title>",
         html,
-        flags=re.DOTALL
+        flags=re.DOTALL,
     )
 
     # 2) meta description (fixierter Sprachstandard)
@@ -102,15 +99,15 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
             f'high-precision edge detection – ideal for coloring pages, clipart and detailed line art, created with EdgeWizard." />'
         ),
         html,
-        flags=re.DOTALL
+        flags=re.DOTALL,
     )
 
-    # 3) <h2 class="page-title">
+    # 3) Page title
     html = re.sub(
         r'<h2\s+class="page-title">.*?</h2>',
         f'<h2 class="page-title">Flag of {country} – Outline & Coloring Page</h2>',
         html,
-        flags=re.DOTALL
+        flags=re.DOTALL,
     )
 
     # 4) Lead Text (sichtbar)
@@ -122,38 +119,37 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
             f'  ideal for coloring pages, clipart and detailed line art.\n'
             f'</p>'
         ),
-        html
+        html,
     )
 
     # 5) Image src: before/after immer relativ und slug-basiert
     html = re.sub(r'src="\./assets/[^"]+_before\.png"', f'src="./assets/{slug}_before.png"', html)
-    html = re.sub(r'src="\./assets/[^"]+_after\.png"',  f'src="./assets/{slug}_after.png"',  html)
+    html = re.sub(r'src="\./assets/[^"]+_after\.png"', f'src="./assets/{slug}_after.png"', html)
 
     # 6) ALT-Texte: finaler Standard (maximal natuerlich)
-    # Before: "Flag of {Country}"
-    # After:  "Flag of {Country} – Outline"
-    # (wir ersetzen bewusst nur diese zwei Images – anhand der src-Pfade)
+    # Before: Flag of {Country}
+    # After:  Flag of {Country} – Outline
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_before\.png"[^>]+alt=")[^"]*(")',
-        rf'\1Flag of {country}\2',
-        html
+        rf"\1Flag of {country}\2",
+        html,
     )
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_after\.png"[^>]+alt=")[^"]*(")',
-        rf'\1Flag of {country} – Outline\2',
-        html
+        rf"\1Flag of {country} – Outline\2",
+        html,
     )
 
     # 7) Icons: immer Root assets (Single Source of Truth)
     html = re.sub(
         r'src="/assets/icon/[^"]*edgewizard_icon\.png"',
         'src="/assets/icon/edgewizard_icon.png"',
-        html
+        html,
     )
     html = re.sub(
         r'src="/assets/icon/[^"]*edgewizard_icon_button\.png"',
         'src="/assets/icon/edgewizard_icon_button.png"',
-        html
+        html,
     )
 
     return html
@@ -174,10 +170,9 @@ def preflight(html: str, slug: str) -> None:
     if any(v != 1 for v in checks.values()):
         raise ValueError(f"Preflight failed (Counts != 1): {checks}")
 
-    # Pfade muessen vorhanden sein
     required = [
-        '/assets/icon/edgewizard_icon.png',
-        '/assets/icon/edgewizard_icon_button.png',
+        "/assets/icon/edgewizard_icon.png",
+        "/assets/icon/edgewizard_icon_button.png",
         f'./assets/{slug}_before.png',
         f'./assets/{slug}_after.png',
     ]
@@ -185,7 +180,6 @@ def preflight(html: str, slug: str) -> None:
         if r not in html:
             raise ValueError(f"Preflight failed (missing '{r}')")
 
-    # Verboten: alte Pfade duerfen nicht vorkommen
     if "/Assets/Icon/" in html:
         raise ValueError("Preflight failed: forbidden '/Assets/Icon/' found in HTML")
 
@@ -193,11 +187,13 @@ def preflight(html: str, slug: str) -> None:
 # =========================
 # MAIN
 # =========================
-def main() -> None:
+def main() -> int:
     if not FLAGS_DIR.exists():
-        raise FileNotFoundError(f"flags/ Ordner fehlt: {FLAGS_DIR}")
+        print(f"❌ flags/ Ordner fehlt: {FLAGS_DIR}")
+        return 1
     if not MASTER.exists():
-        raise FileNotFoundError(f"Master fehlt: {MASTER}")
+        print(f"❌ Master fehlt: {MASTER}")
+        return 1
 
     flags_map = load_flags_map()
     master_html = MASTER.read_text(encoding="utf-8")
@@ -206,18 +202,17 @@ def main() -> None:
     skipped_not_in_json: List[str] = []
     skipped_missing_assets: List[Tuple[str, List[Path]]] = []
 
-    # Wir iterieren ueber Ordner im flags/ Verzeichnis (dein "komfortabler" Workflow)
     for entry in sorted(FLAGS_DIR.iterdir()):
         if not entry.is_dir():
             continue
 
         slug = entry.name
 
-        # Optional: interne Ordner ueberspringen
+        # interne Ordner ueberspringen
         if slug.startswith("_"):
             continue
 
-        # Afghanistan ist Master (nicht automatisch neu generieren)
+        # Master-Ordner nicht generieren
         if slug == "afghanistan":
             continue
 
@@ -228,12 +223,11 @@ def main() -> None:
 
         index_path = entry / "index.html"
         if index_path.exists():
-            continue  # bereits vorhanden -> niemals automatisch ueberschreiben
+            continue  # niemals automatisch ueberschreiben
 
-        # Assets muessen vorhanden sein
-        missing = ensure_assets(slug, entry)
-        if missing:
-            skipped_missing_assets.append((slug, missing))
+        miss = missing_assets(slug, entry)
+        if miss:
+            skipped_missing_assets.append((slug, miss))
             continue
 
         country = flags_map[slug]
@@ -243,37 +237,45 @@ def main() -> None:
         index_path.write_text(html, encoding="utf-8")
         created.append(index_path)
 
-    # Reporting
+    # Report
     if skipped_not_in_json:
-        print("⏭️  Skip (nicht in flags.json eingetragen):")
+        print("⚠️ Uebersprungen (nicht in flags.json):")
         for s in skipped_not_in_json:
-            print(f" - {s}")
+            print(" -", s)
 
     if skipped_missing_assets:
-        print("⏭️  Skip (Assets fehlen):")
-        for slug, missing in skipped_missing_assets:
-            print(f" - {slug}")
-            for p in missing:
-                print(f"    * {p}")
+        print("⚠️ Uebersprungen (Assets fehlen):")
+        for slug, miss in skipped_missing_assets:
+            print(f" - {slug}:")
+            for p in miss:
+                print("    *", p)
 
     if not created:
-        print("✅ Keine neuen Flag-Ordner generiert. (Entweder index.html existiert bereits oder Skips siehe oben.)")
-        return
+        print("✅ Keine neuen Flag-Ordner ohne index.html gefunden. Nichts zu tun.")
+        return 0
 
     print("✅ Neu erzeugt:")
     for p in created:
         print(" -", p)
 
-    # Git: add/commit/push
+    # Git: nur neue Dateien stage'n, damit kein Nebenbei-Chaos entsteht
     run(["git", "checkout", "main"])
     run(["git", "pull", "origin", "main"])
 
-    run(["git", "add", "-A"])
+    run(["git", "add", *[str(p.relative_to(REPO)) for p in created]])
     msg = f"Generate {len(created)} flag landing page(s) from master"
     run(["git", "commit", "-m", msg])
     run(["git", "push", "origin", "main"])
     print("✅ Commit + Push erledigt.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        code = main()
+        pause_if_needed()
+        raise SystemExit(code)
+    except Exception as e:
+        print("❌ Fehler:", str(e))
+        pause_if_needed()
+        raise SystemExit(1)

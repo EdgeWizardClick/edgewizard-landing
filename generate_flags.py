@@ -1,4 +1,4 @@
-import json
+﻿import json
 import os
 import re
 import subprocess
@@ -86,7 +86,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     # 1) <title>
     html = re.sub(
         r"<title>.*?</title>",
-        f"<title>Flag of {country} – Outline & Coloring Page | EdgeWizard</title>",
+        f"<title>Flag of {country} â€“ Outline & Coloring Page | EdgeWizard</title>",
         html,
         flags=re.DOTALL,
     )
@@ -96,7 +96,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
         r'<meta\s+name="description"\s+content="[^"]*"\s*/>',
         (
             f'<meta name="description" content="This clean outline of the flag of {country} is generated with '
-            f'high-precision edge detection – ideal for coloring pages, clipart and detailed line art, created with EdgeWizard." />'
+            f'high-precision edge detection â€“ ideal for coloring pages, clipart and detailed line art, created with EdgeWizard." />'
         ),
         html,
         flags=re.DOTALL,
@@ -105,7 +105,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     # 3) Page title
     html = re.sub(
         r'<h2\s+class="page-title">.*?</h2>',
-        f'<h2 class="page-title">Flag of {country} – Outline & Coloring Page</h2>',
+        f'<h2 class="page-title">Flag of {country} â€“ Outline & Coloring Page</h2>',
         html,
         flags=re.DOTALL,
     )
@@ -115,7 +115,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
         r'(?s)<p\s+class="page-lead">.*?</p>',
         (
             f'<p class="page-lead">\n'
-            f'  This clean outline of the {country} flag is generated with high-precision edge detection –\n'
+            f'  This clean outline of the {country} flag is generated with high-precision edge detection â€“\n'
             f'  ideal for coloring pages, clipart and detailed line art.\n'
             f'</p>'
         ),
@@ -128,7 +128,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
 
     # 6) ALT-Texte: finaler Standard (maximal natuerlich)
     # Before: Flag of {Country}
-    # After:  Flag of {Country} – Outline
+    # After:  Flag of {Country} â€“ Outline
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_before\.png"[^>]+alt=")[^"]*(")',
         rf"\1Flag of {country}\2",
@@ -136,7 +136,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     )
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_after\.png"[^>]+alt=")[^"]*(")',
-        rf"\1Flag of {country} – Outline\2",
+        rf"\1Flag of {country} â€“ Outline\2",
         html,
     )
 
@@ -189,10 +189,10 @@ def preflight(html: str, slug: str) -> None:
 # =========================
 def main() -> int:
     if not FLAGS_DIR.exists():
-        print(f"❌ flags/ Ordner fehlt: {FLAGS_DIR}")
+        print(f"âŒ flags/ Ordner fehlt: {FLAGS_DIR}")
         return 1
     if not MASTER.exists():
-        print(f"❌ Master fehlt: {MASTER}")
+        print(f"âŒ Master fehlt: {MASTER}")
         return 1
 
     flags_map = load_flags_map()
@@ -236,25 +236,25 @@ def main() -> int:
 
         index_path.write_text(html, encoding="utf-8")
         created.append(index_path)
-
+        to_stage.extend([index_path, before, after])
     # Report
     if skipped_not_in_json:
-        print("⚠️ Uebersprungen (nicht in flags.json):")
+        print("âš ï¸ Uebersprungen (nicht in flags.json):")
         for s in skipped_not_in_json:
             print(" -", s)
 
     if skipped_missing_assets:
-        print("⚠️ Uebersprungen (Assets fehlen):")
+        print("âš ï¸ Uebersprungen (Assets fehlen):")
         for slug, miss in skipped_missing_assets:
             print(f" - {slug}:")
             for p in miss:
                 print("    *", p)
 
     if not created:
-        print("✅ Keine neuen Flag-Ordner ohne index.html gefunden. Nichts zu tun.")
+        print("âœ… Keine neuen Flag-Ordner ohne index.html gefunden. Nichts zu tun.")
         return 0
 
-    print("✅ Neu erzeugt:")
+    print("âœ… Neu erzeugt:")
     for p in created:
         print(" -", p)
 
@@ -262,11 +262,11 @@ def main() -> int:
     run(["git", "checkout", "main"])
     run(["git", "pull", "origin", "main"])
 
-    run(["git", "add", *[str(p.relative_to(REPO)) for p in created]])
+    run(["git", "add", *[str(p.relative_to(REPO)) for p in to_stage]])
     msg = f"Generate {len(created)} flag landing page(s) from master"
     run(["git", "commit", "-m", msg])
     run(["git", "push", "origin", "main"])
-    print("✅ Commit + Push erledigt.")
+    print("âœ… Commit + Push erledigt.")
     return 0
 
 
@@ -276,6 +276,8 @@ if __name__ == "__main__":
         pause_if_needed()
         raise SystemExit(code)
     except Exception as e:
-        print("❌ Fehler:", str(e))
+        print("âŒ Fehler:", str(e))
         pause_if_needed()
         raise SystemExit(1)
+
+

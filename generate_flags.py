@@ -36,7 +36,21 @@ def load_flags_map() -> Dict[str, str]:
     if not FLAGS_JSON.exists():
         raise FileNotFoundError(f"flags.json fehlt: {FLAGS_JSON}")
 
-    data = json.loads(FLAGS_JSON.read_text(encoding="utf-8"))
+    raw = FLAGS_JSON.read_text(encoding="utf-8")
+
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        # Human-friendly error
+        snippet = raw.splitlines()[max(e.lineno - 3, 0): e.lineno + 2]
+        snippet_text = "\n".join(f"{i+max(e.lineno-2,1):>4}: {line}" for i, line in enumerate(snippet))
+        raise ValueError(
+            "flags.json ist kein gueltiges JSON.\n"
+            f"Fehler: {e.msg} (Zeile {e.lineno}, Spalte {e.colno})\n\n"
+            f"Ausschnitt:\n{snippet_text}\n\n"
+            "Tipp: Häufigster Fehler ist ein Komma nach dem letzten Eintrag."
+        ) from None
+
     if not isinstance(data, dict) or not data:
         raise ValueError('flags.json muss ein nicht-leeres JSON-Objekt sein: {"slug":"Country", ...}')
 

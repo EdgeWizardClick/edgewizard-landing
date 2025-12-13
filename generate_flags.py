@@ -86,7 +86,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     # 1) <title>
     html = re.sub(
         r"<title>.*?</title>",
-        f"<title>Flag of {country} â€“ Outline & Coloring Page | EdgeWizard</title>",
+        f"<title>Flag of {country} &ndash; Outline & Coloring Page | EdgeWizard</title>",
         html,
         flags=re.DOTALL,
     )
@@ -96,7 +96,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
         r'<meta\s+name="description"\s+content="[^"]*"\s*/>',
         (
             f'<meta name="description" content="This clean outline of the flag of {country} is generated with '
-            f'high-precision edge detection â€“ ideal for coloring pages, clipart and detailed line art, created with EdgeWizard." />'
+            f'high-precision edge detection &ndash; ideal for coloring pages, clipart and detailed line art, created with EdgeWizard." />'
         ),
         html,
         flags=re.DOTALL,
@@ -105,7 +105,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     # 3) Page title
     html = re.sub(
         r'<h2\s+class="page-title">.*?</h2>',
-        f'<h2 class="page-title">Flag of {country} â€“ Outline & Coloring Page</h2>',
+        f'<h2 class="page-title">Flag of {country} &ndash; Outline & Coloring Page</h2>',
         html,
         flags=re.DOTALL,
     )
@@ -115,7 +115,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
         r'(?s)<p\s+class="page-lead">.*?</p>',
         (
             f'<p class="page-lead">\n'
-            f'  This clean outline of the {country} flag is generated with high-precision edge detection â€“\n'
+            f'  This clean outline of the {country} flag is generated with high-precision edge detection &ndash;\n'
             f'  ideal for coloring pages, clipart and detailed line art.\n'
             f'</p>'
         ),
@@ -128,7 +128,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
 
     # 6) ALT-Texte: finaler Standard (maximal natuerlich)
     # Before: Flag of {Country}
-    # After:  Flag of {Country} â€“ Outline
+    # After:  Flag of {Country} &ndash; Outline
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_before\.png"[^>]+alt=")[^"]*(")',
         rf"\1Flag of {country}\2",
@@ -136,7 +136,7 @@ def patch_master_to_country(master_html: str, slug: str, country: str) -> str:
     )
     html = re.sub(
         rf'(<img[^>]+src="\./assets/{re.escape(slug)}_after\.png"[^>]+alt=")[^"]*(")',
-        rf"\1Flag of {country} â€“ Outline\2",
+        rf"\1Flag of {country} &ndash; Outline\2",
         html,
     )
 
@@ -236,6 +236,8 @@ def main() -> int:
 
         index_path.write_text(html, encoding="utf-8")
         created.append(index_path)
+        stage_dirs.append(entry)
+        before, after = expected_asset_paths(slug, entry)
         to_stage.extend([index_path, before, after])
     # Report
     if skipped_not_in_json:
@@ -262,7 +264,7 @@ def main() -> int:
     run(["git", "checkout", "main"])
     run(["git", "pull", "origin", "main"])
 
-    run(["git", "add", *[str(p.relative_to(REPO)) for p in to_stage]])
+    run(["git", "add", *[str(p.relative_to(REPO)) for p in stage_dirs]])
     msg = f"Generate {len(created)} flag landing page(s) from master"
     run(["git", "commit", "-m", msg])
     run(["git", "push", "origin", "main"])
@@ -279,5 +281,8 @@ if __name__ == "__main__":
         print("âŒ Fehler:", str(e))
         pause_if_needed()
         raise SystemExit(1)
+
+
+
 
 

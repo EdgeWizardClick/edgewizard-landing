@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{TITLE}}</title>
+
+  <title>{{META_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}" />
 
   <style>
     :root {
@@ -95,72 +97,67 @@
       text-transform: none;
     }
 
-    /* Afghanistan-specific block */
-    .page-title {
-      margin: 0.35rem auto 0.95rem auto;
-      font-size: clamp(1.05rem, 2.0vw, 1.25rem);
+    .page-title{
+      margin: 0.35rem 0 0.85rem 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
       font-weight: 600;
-      letter-spacing: 0.01em;
       color: var(--color-text-primary);
     }
 
-    .before-after {
-      margin: 0 auto 0.9rem auto;
+    .compare{
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      max-width: 34rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1rem auto 0.9rem;
+      max-width: 760px;
     }
 
-    .before-after figure { margin: 0; }
+    .shot{
+      margin: 0;
+      padding: .75rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+    }
 
-    .before-after img {
+    .shot img{
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 14px;
-      border: 1px solid var(--color-border-subtle);
-      background: rgba(255,255,255,0.02);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      border-radius: 10px;
     }
 
-    .caption {
-      margin-top: 0.5rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
+    .shot figcaption{
+      margin: .55rem 0 0 0;
+      font-size: .9rem;
+      letter-spacing: .04em;
+      color: var(--color-text-secondary);
       text-transform: uppercase;
-      color: var(--color-text-secondary);
     }
 
-    .page-description {
-      margin: 0.35rem auto 0.55rem auto;
-      max-width: 40rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      font-weight: 400;
-      letter-spacing: 0;
+    @media (max-width: 640px){
+      .compare{ grid-template-columns: 1fr; }
+    }
+
+    .page-lead{
+      margin: .2rem 0 1.1rem 0;
       color: var(--color-text-secondary);
+      font-size: clamp(.98rem, 1.45vw, 1.08rem);
+      line-height: 1.6;
       text-align: center;
     }
 
-    .page-link {
-      margin: 0 auto 1.2rem auto;
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-    }
+    .page-link{ margin: 0 0 1.2rem 0; }
 
-    .page-link a {
+    .backlink{
       color: var(--color-text-secondary);
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.18);
-      padding-bottom: 2px;
-      transition: color 0.12s ease-out, border-color 0.12s ease-out, opacity 0.12s ease-out;
+      border-bottom: 1px solid rgba(229,229,229,.25);
     }
 
-    .page-link a:hover {
-      color: var(--color-accent-purple);
-      border-color: rgba(168,127,252,0.7);
-      opacity: 0.95;
+    .backlink:hover{
+      color: var(--color-text-primary);
+      border-bottom-color: rgba(255,255,255,.6);
     }
 
     .tagline {
@@ -261,10 +258,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 640px) {
-      .before-after { grid-template-columns: 1fr; }
-    }
-
     @media (max-width: 480px) {
       main { padding: 1.7rem 1.2rem 2.2rem; }
       .card { padding: 1.8rem 1.4rem 1.9rem; border-radius: 18px; }
@@ -279,32 +272,32 @@
 
   <main>
     <section class="card" aria-labelledby="brand-heading">
-      <img class="logo-mark" src="../../assets/icon/EdgeWizard_Icon.png" alt="EdgeWizard logo" />
+      <img class="logo-mark" src="/assets/icon/EdgeWizard_Icon.png" alt="EdgeWizard logo" />
 
       <div class="brand-block">
         <h1 id="brand-heading" class="brand">EdgeWizard</h1>
         <p class="subtitle">One-Click Edge Detection</p>
       </div>
 
-      <h2 class="page-title">{{H2}}</h2>
+      <h2 class="page-title">{{TITLE}}</h2>
 
-      <div class="before-after" role="group" aria-label="Before and after preview">
-        <figure>
-          <img src="./assets/{{SLUG}}_before.png" alt="Afghanistan flag before outline conversion" loading="lazy" />
-          <figcaption class="caption">Before</figcaption>
+      <div class="compare">
+        <figure class="shot">
+          <img src="./assets/{{SLUG}}_before.png" alt="Flag of {{COUNTRY}} before outline conversion" loading="lazy" decoding="async">
+          <figcaption>Before</figcaption>
         </figure>
-        <figure>
-          <img src="./assets/{{SLUG}}_after.png" alt="Afghanistan flag after outline conversion" loading="lazy" />
-          <figcaption class="caption">After</figcaption>
+        <figure class="shot">
+          <img src="./assets/{{SLUG}}_after.png" alt="Flag of {{COUNTRY}} clean outline for coloring page" loading="lazy" decoding="async">
+          <figcaption>After</figcaption>
         </figure>
       </div>
 
-      <p class="page-description">
-        This clean outline of the Afghanistan flag is generated with high-precision edge detection – ideal for coloring pages, clipart and detailed line art.
+      <p class="page-lead">
+        This clean outline of the {{COUNTRY}} flag is generated with high-precision edge detection – ideal for coloring pages, clipart and detailed line art.
       </p>
 
       <p class="page-link">
-        <a href="https://edgewizard.click">edgewizard.click</a>
+        <a href="/" class="backlink">edgewizard.click</a>
       </p>
 
       <p class="tagline">
@@ -315,7 +308,7 @@
       </p>
 
       <a class="primary-button" href="https://app.edgewizard.click" target="_blank" rel="noopener noreferrer">
-        <img class="icon" src="../../assets/icon/EdgeWizard_Icon_button.png" alt="EdgeWizard icon" />
+        <img class="icon" src="/assets/icon/EdgeWizard_Icon_button.png" alt="EdgeWizard icon" />
         <span>Open Web App</span>
       </a>
 
@@ -340,4 +333,3 @@
   </script>
 </body>
 </html>
-

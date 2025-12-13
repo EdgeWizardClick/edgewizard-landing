@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EdgeWizard – One-Click Edge Detection</title>
+
+  <title>{{META_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}" />
 
   <style>
     :root {
@@ -17,11 +19,7 @@
       --color-border-subtle: rgba(255, 255, 255, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
@@ -29,12 +27,9 @@
       flex-direction: column;
       background-color: var(--color-bg-dark);
       color: var(--color-text-primary);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-
-    /* Header */
 
     header {
       padding: 1rem 1.5rem;
@@ -51,8 +46,6 @@
       font-size: 0.85rem;
       color: var(--color-text-secondary);
     }
-
-    /* Main Card */
 
     main {
       flex: 1;
@@ -75,45 +68,108 @@
     }
 
     .logo-mark {
-  width: 6.4rem;
-  height: 6.4rem;
-  margin: 0 auto 0.45rem;
-  display: block;
-}
+      width: 6.4rem;
+      height: 6.4rem;
+      margin: 0 auto 0.45rem;
+      display: block;
+    }
 
-.brand-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1.0rem;
-}
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.0rem;
+    }
 
-.brand {
-  margin: 0;
-  font-size: clamp(2.2rem, 3.4vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
+    .brand {
+      margin: 0;
+      font-size: clamp(2.2rem, 3.4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-.subtitle {
-  font-size: clamp(0.98rem, 1.52vw, 1.10rem);
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.048em;
-  text-transform: none;
-}
+    .subtitle {
+      font-size: clamp(0.98rem, 1.52vw, 1.10rem);
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.048em;
+      text-transform: none;
+    }
+
+    .page-title{
+      margin: 0.35rem 0 0.85rem 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .compare{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1rem auto 0.9rem;
+      max-width: 760px;
+    }
+
+    .shot{
+      margin: 0;
+      padding: .75rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .shot img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .shot figcaption{
+      margin: .55rem 0 0 0;
+      font-size: .9rem;
+      letter-spacing: .04em;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px){
+      .compare{ grid-template-columns: 1fr; }
+    }
+
+    .page-lead{
+      margin: .2rem 0 1.1rem 0;
+      color: var(--color-text-secondary);
+      font-size: clamp(.98rem, 1.45vw, 1.08rem);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .page-link{ margin: 0 0 1.2rem 0; }
+
+    .backlink{
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(229,229,229,.25);
+    }
+
+    .backlink:hover{
+      color: var(--color-text-primary);
+      border-bottom-color: rgba(255,255,255,.6);
+    }
 
     .tagline {
-  margin: 0.9rem auto 1.6rem auto;
-  max-width: 40rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--color-text-secondary);
-  text-align: center;
-}
+      margin: 0.9rem auto 1.6rem auto;
+      max-width: 40rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--color-text-secondary);
+      text-align: center;
+    }
 
     .primary-button {
       display: inline-flex;
@@ -173,8 +229,6 @@
       box-shadow: 0 0 8px rgba(101, 255, 122, 0.8);
     }
 
-    /* Footer */
-
     footer {
       padding: 0.9rem 1.5rem 1.4rem;
       border-top: 1px solid var(--color-border-subtle);
@@ -200,28 +254,17 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 480px) {
-      main {
-        padding: 1.7rem 1.2rem 2.2rem;
-      }
-
-      .card {
-        padding: 1.8rem 1.4rem 1.9rem;
-        border-radius: 18px;
-      }
+      main { padding: 1.7rem 1.2rem 2.2rem; }
+      .card { padding: 1.8rem 1.4rem 1.9rem; border-radius: 18px; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="header-title">EdgeWizard</div>
@@ -229,16 +272,33 @@
 
   <main>
     <section class="card" aria-labelledby="brand-heading">
-      <img
-        class="logo-mark"
-        src="./assets/icon/EdgeWizard_Icon.png"
-        alt="EdgeWizard logo"
-      />
+      <img class="logo-mark" src="/assets/icon/EdgeWizard_Icon.png" alt="EdgeWizard logo" />
 
       <div class="brand-block">
         <h1 id="brand-heading" class="brand">EdgeWizard</h1>
         <p class="subtitle">One-Click Edge Detection</p>
       </div>
+
+      <h2 class="page-title">{{TITLE}}</h2>
+
+      <div class="compare">
+        <figure class="shot">
+          <img src="./assets/{{SLUG}}_before.png" alt="Flag of {{COUNTRY}} before outline conversion" loading="lazy" decoding="async">
+          <figcaption>Before</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="./assets/{{SLUG}}_after.png" alt="Flag of {{COUNTRY}} clean outline for coloring page" loading="lazy" decoding="async">
+          <figcaption>After</figcaption>
+        </figure>
+      </div>
+
+      <p class="page-lead">
+        This clean outline of the {{COUNTRY}} flag is generated with high-precision edge detection – ideal for coloring pages, clipart and detailed line art.
+      </p>
+
+      <p class="page-link">
+        <a href="/" class="backlink">edgewizard.click</a>
+      </p>
 
       <p class="tagline">
         High-end edge detection with clean, precise outlines — optimized for coloring pages,
@@ -247,17 +307,8 @@
         High-precision processing may take a few seconds.
       </p>
 
-      <a
-        class="primary-button"
-        href="https://app.edgewizard.click"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="icon"
-          src="./assets/icon/EdgeWizard_Icon_button.png"
-          alt="EdgeWizard icon"
-        />
+      <a class="primary-button" href="https://app.edgewizard.click" target="_blank" rel="noopener noreferrer">
+        <img class="icon" src="/assets/icon/EdgeWizard_Icon_button.png" alt="EdgeWizard icon" />
         <span>Open Web App</span>
       </a>
 

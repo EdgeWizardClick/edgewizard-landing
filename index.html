@@ -210,9 +210,105 @@
       }
     }
 
+    .content-block {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: left;
+      animation: fadeInUp 0.45s ease-out both;
+    }
+
+    .content-block h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .content-block p,
+    .content-block li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .content-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content-block li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .content-block li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-purple);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .content-block .step-list li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      font-size: 0.8rem;
+      font-weight: 500;
+      width: 1.2rem;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      text-align: center;
+      border-radius: 50%;
+      background-color: var(--color-primary-purple);
+      color: var(--color-text-primary);
+      left: -0.2rem;
+      top: 0.1rem;
+    }
+
+    .content-block .placeholder-box {
+      min-height: 150px;
+      border: 1px dashed var(--color-border-subtle);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .content-block .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .content-block .faq-item strong {
+      display: block;
+      color: var(--color-accent-purple);
+      margin-bottom: 0.3rem;
+    }
+
+    .content-block .cta-section {
+      text-align: center;
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+
     @media (max-width: 480px) {
       main {
         padding: 1.7rem 1.2rem 2.2rem;
+      }
+
+      .content-block {
+        padding: 0 1.2rem;
       }
 
       .card {
@@ -264,6 +360,73 @@
       <p class="status">LIVE</p>
     </section>
   </main>
+
+  <div class="content-block">
+    <section id="how-it-works">
+      <h2>How It Works: The AI Behind the Magic</h2>
+      <p>EdgeWizard uses a proprietary, multi-stage AI pipeline to transform any image into a clean, high-fidelity line drawing. Our model is specifically trained to filter out noise and retain only the most essential structural lines.</p>
+      <ul class="step-list">
+        <li>Upload your image (photo, drawing, or graphic).</li>
+        <li>Our AI analyzes the image, identifying complex contours and edges.</li>
+        <li>A precise, clean line art image is generated and ready for download.</li>
+      </ul>
+    </section>
+
+    <section id="use-cases">
+      <h2>Use Cases: Perfect for Artists, Designers, and Hobbyists</h2>
+      <ul>
+        <li>Creating custom coloring pages from photographs.</li>
+        <li>Generating clean line art for graphic design and illustration.</li>
+        <li>Converting complex images into simple, printable stencils.</li>
+        <li>Preparing images for laser engraving or vinyl cutting.</li>
+      </ul>
+    </section>
+
+    <section id="usage-credits">
+      <h2>Usage & Credits</h2>
+      <p>EdgeWizard uses a credit-based system. You can try it daily for free, and only pay when you need more.</p>
+    </section>
+
+    <section id="before-after">
+      <h2>Before & After: Visual Examples</h2>
+      <div class="placeholder-box">
+        <p>Placeholder for Before/After Image Example</p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <strong>What kind of images work best?</strong>
+        <p>The AI is optimized for images with clear subjects and defined outlines, such as product photos, illustrations, and portraits.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Is my image data secure?</strong>
+        <p>Yes, all uploaded images are processed securely and are not stored after the line art generation is complete.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Can I use the generated line art commercially?</strong>
+        <p>Yes, you retain full commercial rights to all line art generated using EdgeWizard.</p>
+      </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+      <h2>Ready to Transform Your Images?</h2>
+      <a
+        class="primary-button"
+        href="https://app.edgewizard.click"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="icon"
+          src="./assets/icon/edgewizard_icon_button.png"
+          alt="EdgeWizard icon"
+        />
+        <span>Open Web App</span>
+      </a>
+    </section>
+  </div>
 
   <footer>
     <span>© <span id="year"></span> EdgeWizard · Raphael König</span>

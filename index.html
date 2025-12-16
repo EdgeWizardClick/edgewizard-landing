@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -75,45 +75,45 @@
     }
 
     .logo-mark {
-  width: 6.4rem;
-  height: 6.4rem;
-  margin: 0 auto 0.45rem;
-  display: block;
-}
+	  width: 6.4rem;
+	  height: 6.4rem;
+	  margin: 0 auto 0.45rem;
+	  display: block;
+	}
 
-.brand-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1.0rem;
-}
+	.brand-block {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 0.55rem;
+	  margin-bottom: 1.0rem;
+	}
 
-.brand {
-  margin: 0;
-  font-size: clamp(2.2rem, 3.4vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
+	.brand {
+	  margin: 0;
+	  font-size: clamp(2.2rem, 3.4vw, 2.4rem);
+	  font-weight: 600;
+	  letter-spacing: 0.02em;
+	}
 
-.subtitle {
-  font-size: clamp(0.98rem, 1.52vw, 1.10rem);
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.048em;
-  text-transform: none;
-}
+	.subtitle {
+	  font-size: clamp(0.98rem, 1.52vw, 1.10rem);
+	  font-weight: 400;
+	  color: var(--color-text-secondary);
+	  letter-spacing: 0.048em;
+	  text-transform: none;
+	}
 
     .tagline {
-  margin: 0.9rem auto 1.6rem auto;
-  max-width: 40rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--color-text-secondary);
-  text-align: center;
-}
+	  margin: 0.9rem auto 1.6rem auto;
+	  max-width: 40rem;
+	  font-size: 0.95rem;
+	  line-height: 1.6;
+	  font-weight: 400;
+	  letter-spacing: 0;
+	  color: var(--color-text-secondary);
+	  text-align: center;
+	}
 
     .primary-button {
       display: inline-flex;
@@ -309,20 +309,70 @@
       line-height: 1.2;
     }
 
+    /* FAQ Accordion Styling */
     .content-block .faq-item {
-      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      margin-bottom: 0;
     }
 
-    .content-block .faq-item strong {
-      display: block;
+    .content-block .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--color-text-primary); /* White for question */
+      transition: color 0.15s ease-out;
+    }
+
+    .content-block .faq-question:hover {
       color: var(--color-accent-purple);
-      margin-bottom: 0.3rem;
+    }
+
+    .content-block .faq-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      transition: transform 0.2s ease-out;
+      color: var(--color-accent-purple);
+    }
+
+    .content-block .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      color: var(--color-text-secondary); /* Soft gray for answer */
+      padding: 0 0 0 0;
+    }
+
+    .content-block .faq-answer p {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      color: var(--color-text-secondary);
+    }
+
+    .content-block .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .content-block .faq-item.active .faq-answer {
+      max-height: 200px; /* Adjust as needed */
+      padding: 0 0 1rem 0;
     }
 
     .content-block .cta-section {
       text-align: center;
       margin-top: 4rem;
       margin-bottom: 4rem;
+    }
+
+    .content-block .cta-subline {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin-top: 1.2rem;
+      margin-bottom: 0;
+      letter-spacing: 0.02em;
     }
 
     @media (max-width: 480px) {
@@ -341,6 +391,10 @@
 
       .content-block .comparison-item img {
         border-bottom: none;
+      }
+
+      .content-block .faq-question {
+        font-size: 0.95rem;
       }
 
       .card {
@@ -369,10 +423,13 @@
       </div>
 
       <p class="tagline">
-	        High-end edge detection with clean, precise outlines — optimized for coloring pages,
-	        clipart and detailed line art.<br /><br />
-	        Powered by advanced AI-driven image analysis<br />
-	        High-precision edge detection, optimized for clean outlines and coloring pages.
+        High-end edge detection with clean, precise outlines — optimized for coloring pages,
+        clipart and detailed line art.  
+  
+
+        Powered by advanced AI-driven image analysis  
+
+        High-precision edge detection, optimized for clean outlines and coloring pages.
       </p>
 
       <a
@@ -396,26 +453,36 @@
   <div class="content-block">
     <section id="how-it-works">
       <h2>How It Works</h2>
-	      <p>EdgeWizard is designed to be simple — One-Click to clean, precise outlines.</p>
-	      <ul class="step-list">
-	        <li>Upload your image or use the camera</li>
-	        <li>Choose your line style<br />Select Thin Lines or Bold Lines.</li>
-	        <li>Add optional extras<br />Keep Black Lines or add an Outer Border.</li>
-	        <li>Press the click button<br />High-precision edge detection starts automatically.</li>
-	        <li>Download your result<br />Get clean line art as a PNG, perfect outlines and coloring pages.</li>
-	      </ul>
+      <p>EdgeWizard is designed to be simple — One-Click to clean, precise outlines.</p>
+      <ul class="step-list">
+        <li>Upload your image or use the camera</li>
+        <li>Choose your line style  
+Select Thin Lines or Bold Lines.</li>
+        <li>Add optional extras  
+Keep Black Lines or add an Outer Border.</li>
+        <li>Press the click button  
+High-precision edge detection starts automatically.</li>
+        <li>Download your result  
+Get clean line art as a PNG, perfect outlines and coloring pages.</li>
+      </ul>
     </section>
 
     <section id="use-cases">
       <h2>Use Cases</h2>
-	      <ul>
-	        <li>Creating clean, precise outlines from photos<br />Turn images into printable coloring pages with clear, consistent outlines.</li>
-	        <li>Educational worksheets and kids’ activities<br />Create simple line drawings for learning materials, exercises, and children’s coloring pages.</li>
-	        <li>Generating high-quality line art for clipart and illustrations<br />Perfect for detailed line drawings and reusable clipart assets.</li>
-	        <li>Simplifying complex images into clear outlines<br />Create minimal, printable stencils with reliable line quality.</li>
-	        <li>DIY crafts, printables, and creative projects<br />Ideal for posters, stickers, craft templates, and digital downloads.</li>
-	        <li>Preparing files for laser engraving and vinyl cutting<br />Clean edges and defined borders for precise cutting workflows.</li>
-	      </ul>
+      <ul>
+        <li>Creating clean, precise outlines from photos  
+Turn images into printable coloring pages with clear, consistent outlines.</li>
+        <li>Educational worksheets and kids’ activities  
+Create simple line drawings for learning materials, exercises, and children’s coloring pages.</li>
+        <li>Generating high-quality line art for clipart and illustrations  
+Perfect for detailed line drawings and reusable clipart assets.</li>
+        <li>Simplifying complex images into clear outlines  
+Create minimal, printable stencils with reliable line quality.</li>
+        <li>DIY crafts, printables, and creative projects  
+Ideal for posters, stickers, craft templates, and digital downloads.</li>
+        <li>Preparing files for laser engraving and vinyl cutting  
+Clean edges and defined borders for precise cutting workflows.</li>
+      </ul>
     </section>
 
     <section id="usage-credits">
@@ -452,23 +519,56 @@
     </section>
 
     <section id="faq">
-      <h2>Frequently Asked Questions (FAQ)</h2>
+      <h2>Frequently Asked Questions (FAQ )</h2>
       <div class="faq-item">
-        <strong>What kind of images work best?</strong>
-        <p>The AI is optimized for images with clear subjects and defined outlines, such as product photos, illustrations, and portraits.</p>
+        <div class="faq-question">
+          What kind of images work best?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>EdgeWizard works best with images that have clear subjects and defined outlines, such as illustrations, clipart and high-contrast photos.</p>
+        </div>
       </div>
       <div class="faq-item">
-        <strong>Is my image data secure?</strong>
-        <p>Yes, all uploaded images are processed securely and are not stored after the line art generation is complete.</p>
+        <div class="faq-question">
+          Is my image data secure?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. All uploaded images are processed securely and are not stored after the line art generation is complete.</p>
+        </div>
       </div>
       <div class="faq-item">
-        <strong>Can I use the generated line art commercially?</strong>
-        <p>Yes, you retain full commercial rights to all line art generated using EdgeWizard.</p>
+        <div class="faq-question">
+          Can I use the generated line art commercially?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. You retain full commercial rights to all line art generated using EdgeWizard.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          How long does the processing take?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>High-precision processing may take a few seconds depending on image size.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Do I need to create an account?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. An account is required to use EdgeWizard. Creating an account is free and gives you daily free credits.</p>
+        </div>
       </div>
     </section>
 
     <section id="cta" class="cta-section">
-      <h2>Ready to Transform Your Images?</h2>
+      <h2>Start the Magic</h2>
       <a
         class="primary-button"
         href="https://app.edgewizard.click"
@@ -482,6 +582,7 @@
         />
         <span>Open Web App</span>
       </a>
+      <p class="cta-subline">Free account · Free daily credits · One-Click Magic</p>
     </section>
   </div>
 
@@ -498,8 +599,24 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year" ).textContent = new Date().getFullYear();
+
+    // FAQ Accordion Logic
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Close all open items
+        faqItems.forEach(i => i.classList.remove('active'));
+
+        // Toggle the clicked item
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>
-

@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -75,45 +75,45 @@
     }
 
     .logo-mark {
-	  width: 6.4rem;
-	  height: 6.4rem;
-	  margin: 0 auto 0.45rem;
-	  display: block;
-	}
+      width: 6.4rem;
+      height: 6.4rem;
+      margin: 0 auto 0.45rem;
+      display: block;
+    }
 
-	.brand-block {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 0.55rem;
-	  margin-bottom: 1.0rem;
-	}
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
 
-	.brand {
-	  margin: 0;
-	  font-size: clamp(2.2rem, 3.4vw, 2.4rem);
-	  font-weight: 600;
-	  letter-spacing: 0.02em;
-	}
+    .brand {
+      margin: 0;
+      font-size: clamp(2.2rem, 3.4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-	.subtitle {
-	  font-size: clamp(0.98rem, 1.52vw, 1.10rem);
-	  font-weight: 400;
-	  color: var(--color-text-secondary);
-	  letter-spacing: 0.048em;
-	  text-transform: none;
-	}
+    .subtitle {
+      font-size: clamp(0.98rem, 1.52vw, 1.10rem);
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.048em;
+      text-transform: none;
+    }
 
     .tagline {
-	  margin: 0.9rem auto 1.6rem auto;
-	  max-width: 40rem;
-	  font-size: 0.95rem;
-	  line-height: 1.6;
-	  font-weight: 400;
-	  letter-spacing: 0;
-	  color: var(--color-text-secondary);
-	  text-align: center;
-	}
+      margin: 0.9rem auto 1.6rem auto;
+      max-width: 40rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--color-text-secondary);
+      text-align: center;
+    }
 
     .primary-button {
       display: inline-flex;
@@ -171,6 +171,48 @@
       border-radius: 999px;
       background: #65ff7a;
       box-shadow: 0 0 8px rgba(101, 255, 122, 0.8);
+    }
+
+    .stats-section {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0.1rem 1.5rem 1.5rem;
+      text-align: center;
+      animation: fadeInUp 0.45s ease-out both;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      border: 1px solid var(--color-border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+
+    .stat-value {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-text-primary);
+    }
+
+    .stat-label {
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+    }
+
+    .stats-note {
+      margin-top: 0.65rem;
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+      opacity: 0.75;
     }
 
     /* Footer */
@@ -290,7 +332,7 @@
       border: 1px solid var(--color-border-subtle);
       border-radius: 8px;
       overflow: hidden;
-      background-color: #1a1a1a; /* Slightly lighter background for the image container */
+      background-color: #1a1a1a;
     }
 
     .content-block .comparison-item img {
@@ -309,7 +351,6 @@
       line-height: 1.2;
     }
 
-    /* FAQ Accordion Styling */
     .content-block .faq-item {
       border-bottom: 1px solid var(--color-border-subtle);
       margin-bottom: 0;
@@ -322,7 +363,7 @@
       padding: 1rem 0;
       cursor: pointer;
       font-weight: 500;
-      color: var(--color-text-primary); /* White for question */
+      color: var(--color-text-primary);
       transition: color 0.15s ease-out;
     }
 
@@ -341,7 +382,7 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-      color: var(--color-text-secondary); /* Soft gray for answer */
+      color: var(--color-text-secondary);
       padding: 0 0 0 0;
     }
 
@@ -356,7 +397,7 @@
     }
 
     .content-block .faq-item.active .faq-answer {
-      max-height: 200px; /* Adjust as needed */
+      max-height: 200px;
       padding: 0 0 1rem 0;
     }
 
@@ -378,6 +419,15 @@
     @media (max-width: 480px) {
       main {
         padding: 1.7rem 1.2rem 2.2rem;
+      }
+
+      .stats-section {
+        padding: 0 1.2rem 1.2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
       }
 
       .content-block {
@@ -423,14 +473,14 @@
       </div>
 
       <p class="tagline">
-  High-end edge detection with clean, precise outlines — optimized for coloring pages,
-  clipart and detailed line art.
-</p>
+        High-end edge detection with clean, precise outlines — optimized for coloring pages,
+        clipart and detailed line art.
+      </p>
 
-<p class="tagline">
-  Powered by advanced AI-driven image analysis<br />
-  High-precision edge detection, optimized for clean outlines and coloring pages.
-</p>
+      <p class="tagline">
+        Powered by advanced AI-driven image analysis<br />
+        High-precision edge detection, optimized for clean outlines and coloring pages.
+      </p>
 
       <a
         class="primary-button"
@@ -450,6 +500,22 @@
     </section>
   </main>
 
+  <section id="stats" class="stats-section" aria-label="EdgeWizard usage statistics">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="ewImages">—</div>
+        <div class="stat-label">Images generated</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value" id="ewCredits">—</div>
+        <div class="stat-label">Credits spent</div>
+      </div>
+    </div>
+
+    <div class="stats-note" id="ewStatsNote">Updated daily</div>
+  </section>
+
   <div class="content-block">
     <section id="how-it-works">
       <h2>How It Works</h2>
@@ -457,9 +523,9 @@
       <ul class="step-list">
         <li>Upload your image or use the camera</li>
         <li>Choose your line style<br />Select Thin Lines or Bold Lines.</li>
-<li>Add optional extras<br />Keep Black Lines or add an Outer Border.</li>
-<li>Press the click button<br />High-precision edge detection starts automatically.</li>
-<li>Download your result<br />Get clean line art as a PNG, perfect outlines and coloring pages.</li>
+        <li>Add optional extras<br />Keep Black Lines or add an Outer Border.</li>
+        <li>Press the click button<br />High-precision edge detection starts automatically.</li>
+        <li>Download your result<br />Get clean line art as a PNG, perfect outlines and coloring pages.</li>
       </ul>
     </section>
 
@@ -489,7 +555,6 @@ Clean edges and defined borders for precise cutting workflows.</li>
     <section id="before-after">
       <h2>Before & After – One-Click Edge Detection</h2>
       <div class="comparison-container">
-        <!-- Row 1 -->
         <div class="comparison-row">
           <div class="comparison-item">
             <img src="./assets/before_after/wizard_original.png" alt="Original Image" />
@@ -500,7 +565,7 @@ Clean edges and defined borders for precise cutting workflows.</li>
             <p class="image-label">Line Style: Thin Lines</p>
           </div>
         </div>
-        <!-- Row 2 -->
+
         <div class="comparison-row">
           <div class="comparison-item">
             <img src="./assets/before_after/wizard_original.png" alt="Original Image" />
@@ -595,19 +660,47 @@ Clean edges and defined borders for precise cutting workflows.</li>
   </footer>
 
   <script>
-    document.getElementById("year" ).textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // FAQ Accordion Logic
+    (async () => {
+      try {
+        const res = await fetch(
+          "https://edgewizard-backend-production.up.railway.app/public/metrics",
+          { cache: "no-store" }
+        );
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        const imagesEl = document.getElementById("ewImages");
+        const creditsEl = document.getElementById("ewCredits");
+        const noteEl = document.getElementById("ewStatsNote");
+
+        if (imagesEl) {
+          imagesEl.textContent = `${Number(data.images_total ?? 0).toLocaleString("de-CH")}+`;
+        }
+
+        if (creditsEl) {
+          creditsEl.textContent = `${Number(data.credits_spent_total ?? 0).toLocaleString("de-CH")}+`;
+        }
+
+        if (noteEl) {
+          noteEl.textContent = "Updated daily";
+        }
+      } catch (_) {
+        // silent fail
+      }
+    })();
+
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
       item.querySelector('.faq-question').addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Close all open items
         faqItems.forEach(i => i.classList.remove('active'));
 
-        // Toggle the clicked item
         if (!isActive) {
           item.classList.add('active');
         }

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
   <title>Convert Image to Coloring Page Online | EdgeWizard</title>
-  <meta name="description" content="Convert any image into a clean, printable coloring page online in seconds. EdgeWizard creates precise outlines for coloring pages, worksheets, clipart and detailed line art. Free daily credits included.">
+  
+  <meta name="description" content="Convert any image into a clean, printable coloring page online in seconds. Create precise outlines for coloring pages, worksheets, clipart and detailed line art with EdgeWizard.">
 
   <style>
     :root {
@@ -36,6 +37,8 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Header */
+
     header {
       padding: 1rem 1.5rem;
       border-bottom: 1px solid var(--color-border-subtle);
@@ -52,18 +55,29 @@
       color: var(--color-text-secondary);
     }
 
+    .seo-headline {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 2.2rem 1.5rem 0.6rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    /* Main Card */
+
     main {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.5rem 2.2rem;
+      padding: 2rem 1.5rem 2.5rem;
     }
 
     .card {
       width: 100%;
-      max-width: 760px;
-      padding: 2.3rem 2rem 2.3rem;
+      max-width: 640px;
+      padding: 2.1rem 1.9rem 2.1rem;
       border-radius: 22px;
       background: radial-gradient(circle at top, #19151f 0, #111111 55%, #0b0b0b 100%);
       border: 1px solid var(--color-border-subtle);
@@ -89,7 +103,7 @@
 
     .brand {
       margin: 0;
-      font-size: clamp(2.2rem, 3.6vw, 2.5rem);
+      font-size: clamp(2.2rem, 3.4vw, 2.4rem);
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -103,10 +117,10 @@
     }
 
     .tagline {
-      margin: 0.7rem auto 1rem auto;
-      max-width: 44rem;
-      font-size: 0.98rem;
-      line-height: 1.65;
+      margin: 0.6rem auto 0.9rem auto;
+      max-width: 40rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
       font-weight: 400;
       letter-spacing: 0;
       color: var(--color-text-secondary);
@@ -149,20 +163,6 @@
       opacity: 0.9;
     }
 
-    .secondary-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.88rem;
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      transition: color 0.12s ease-out, opacity 0.12s ease-out;
-    }
-
-    .secondary-link:hover {
-      color: var(--color-accent-purple);
-      opacity: 0.95;
-    }
-
     .status {
       margin-top: 0.9rem;
       font-size: 0.82rem;
@@ -185,84 +185,49 @@
       box-shadow: 0 0 8px rgba(101, 255, 122, 0.8);
     }
 
-    .content-block {
+    .stats-section {
       width: 100%;
-      max-width: 760px;
+      max-width: 640px;
       margin: 0 auto;
-      padding: 0 1.5rem;
-      text-align: left;
+      padding: 0.1rem 1.5rem 1.5rem;
+      text-align: center;
       animation: fadeInUp 0.45s ease-out both;
     }
 
-    .content-block h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-top: 3.5rem;
-      margin-bottom: 1.2rem;
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border-subtle);
-      padding-bottom: 0.5rem;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
     }
 
-    .content-block p,
-    .content-block li {
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--color-text-secondary);
-      margin-bottom: 1rem;
+    .stat-card {
+      border: 1px solid var(--color-border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
     }
 
-    .content-block ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content-block li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .content-block li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--color-accent-purple);
-      font-weight: bold;
-      font-size: 1.2rem;
-      line-height: 1;
-    }
-
-    .content-block .step-list li::before {
-      content: "•";
-      color: var(--color-accent-purple);
-      font-weight: bold;
-      font-size: 1.2rem;
-      line-height: 1;
-      left: 0;
-      top: 0;
-      background-color: transparent;
-      box-shadow: none;
-      width: auto;
-      height: auto;
-      text-align: left;
-      border-radius: 0;
-    }
-
-    .content-block .cta-section {
-      text-align: center;
-      margin-top: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    .content-block .cta-subline {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--color-text-secondary);
-      margin-top: 1.2rem;
-      margin-bottom: 0;
+    .stat-value {
+      font-size: 1.55rem;
+      font-weight: 700;
       letter-spacing: 0.02em;
+      color: var(--color-text-primary);
     }
+
+    .stat-label {
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+    }
+
+    .stats-note {
+      margin-top: 0.65rem;
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+      opacity: 0.75;
+    }
+
+    /* Footer */
 
     footer {
       padding: 0.9rem 1.5rem 1.4rem;
@@ -299,18 +264,165 @@
       }
     }
 
+    .content-block {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: left;
+      animation: fadeInUp 0.45s ease-out both;
+    }
+
+    .content-block h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .content-block p,
+    .content-block li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .content-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content-block li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .content-block li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-purple);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .content-block .step-list li::before {
+      content: "•";
+      color: var(--color-accent-purple);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+      left: 0;
+      top: 0;
+      background-color: transparent;
+      box-shadow: none;
+      width: auto;
+      height: auto;
+      text-align: left;
+      border-radius: 0;
+    }
+
+    .content-block .faq-item {
+      border-bottom: 1px solid var(--color-border-subtle);
+      margin-bottom: 0;
+    }
+
+    .content-block .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      transition: color 0.15s ease-out;
+    }
+
+    .content-block .faq-question:hover {
+      color: var(--color-accent-purple);
+    }
+
+    .content-block .faq-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      transition: transform 0.2s ease-out;
+      color: var(--color-accent-purple);
+    }
+
+    .content-block .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      color: var(--color-text-secondary);
+      padding: 0 0 0 0;
+    }
+
+    .content-block .faq-answer p {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      color: var(--color-text-secondary);
+    }
+
+    .content-block .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .content-block .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 0 1rem 0;
+    }
+
+    .content-block .cta-section {
+      text-align: center;
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .content-block .cta-subline {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin-top: 1.2rem;
+      margin-bottom: 0;
+      letter-spacing: 0.02em;
+    }
+
     @media (max-width: 480px) {
       main {
         padding: 1.7rem 1.2rem 2.2rem;
       }
 
-      .card {
-        padding: 1.8rem 1.4rem 1.9rem;
-        border-radius: 18px;
+      .seo-headline {
+        font-size: 1.45rem;
+        margin: 1.6rem 1.2rem 0.5rem;
+      }
+
+      .stats-section {
+        padding: 0 1.2rem 1.2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
       }
 
       .content-block {
         padding: 0 1.2rem;
+      }
+
+      .content-block .faq-question {
+        font-size: 0.95rem;
+      }
+
+      .card {
+        padding: 1.8rem 1.4rem 1.9rem;
+        border-radius: 18px;
       }
     }
   </style>
@@ -320,8 +432,10 @@
     <div class="header-title">EdgeWizard</div>
   </header>
 
+  <h1 class="seo-headline">Convert Image to Coloring Page Online</h1>
+
   <main>
-    <section class="card" aria-labelledby="seo-page-heading">
+    <section class="card" aria-labelledby="brand-heading">
       <img
         class="logo-mark"
         src="./assets/icon/edgewizard_icon.png"
@@ -329,8 +443,8 @@
       />
 
       <div class="brand-block">
-        <h1 id="seo-page-heading" class="brand">Convert Image to Coloring Page Online</h1>
-        <p class="subtitle">EdgeWizard · One-Click Coloring Page</p>
+        <div id="brand-heading" class="brand">EdgeWizard</div>
+        <p class="subtitle">One-Click Coloring Page</p>
       </div>
 
       <p class="tagline">
@@ -355,33 +469,43 @@
         <span>Open Web App</span>
       </a>
 
-      <a class="secondary-link" href="/index.html">Back to EdgeWizard Home</a>
-
       <p class="status">LIVE</p>
     </section>
   </main>
+
+  <section id="stats" class="stats-section" aria-label="EdgeWizard usage statistics">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="ewImages">—</div>
+        <div class="stat-label">Images generated</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value" id="ewCredits">—</div>
+        <div class="stat-label">Credits spent</div>
+      </div>
+    </div>
+
+    <div class="stats-note" id="ewStatsNote">Updated daily</div>
+  </section>
 
   <div class="content-block">
     <section id="what-is-it">
       <h2>What Is EdgeWizard?</h2>
       <p>
-        EdgeWizard is designed to convert images into clean, printable coloring pages in seconds.
-        It creates precise outlines from photos, illustrations and clipart, making it easy to prepare
-        coloring pages, worksheets and detailed line art without manual tracing.
+        EdgeWizard is an online tool that helps you convert any image into a clean, printable coloring page in seconds.
+        It creates precise outlines from photos, illustrations and clipart, making it easier to prepare coloring pages,
+        worksheets and detailed line art without complicated editing.
       </p>
       <p>
-        If you want to convert an image to a coloring page online, EdgeWizard gives you a fast and
-        simple workflow with consistent results. The tool is built for people who need clean outlines
-        for printable pages, educational materials, clipart and digital design projects.
+        If you want to convert an image to a coloring page online, EdgeWizard gives you a fast workflow, clean results
+        and a simple way to create printable pages for personal, educational and creative projects.
       </p>
     </section>
 
     <section id="how-it-works">
       <h2>How It Works</h2>
-      <p>
-        EdgeWizard keeps the process simple — convert any image into a clean, precise coloring page
-        in just a few steps.
-      </p>
+      <p>EdgeWizard keeps the process simple — convert any image into a clean, precise coloring page in just a few steps.</p>
       <ul class="step-list">
         <li>Upload your image or use the camera</li>
         <li>Choose your line style<br />Select Thin Lines or Bold Lines.</li>
@@ -391,38 +515,74 @@
       </ul>
     </section>
 
-    <section id="why-use-it">
-      <h2>Why Use EdgeWizard?</h2>
+    <section id="use-cases">
+      <h2>Use Cases</h2>
       <ul>
-        <li><strong>Convert Image to Coloring Page:</strong> Turn any image into a clean, printable coloring page with precise outlines for books, worksheets and printable pages.</li>
-        <li><strong>Worksheets & Education:</strong> Create simple coloring pages and educational worksheets for children, schools and learning materials.</li>
-        <li><strong>Clipart & Detailed Line Art:</strong> Generate precise outlines from images for clipart, detailed line art and digital design projects.</li>
-        <li><strong>Fast Online Workflow:</strong> Convert images online without a complicated editing process or manual tracing.</li>
+        <li><strong>Convert Image to Coloring Page:</strong> Convert any image into a clean, printable coloring page with precise outlines — perfect for coloring books, worksheets and printable pages.</li>
+
+        <li><strong>Printable Coloring Pages for Kids & Education:</strong> Create simple coloring pages and worksheets for children, schools and educational materials with clear outlines.</li>
+
+        <li><strong>Clipart & Detailed Line Art Creation:</strong> Generate precise outlines from images for clipart, detailed line art and digital design projects.</li>
       </ul>
     </section>
 
-    <section id="who-is-it-for">
-      <h2>Who Is It For?</h2>
-      <p>
-        EdgeWizard is useful for parents, teachers, Etsy sellers, designers and creative users who
-        want to convert images into coloring pages quickly. It is especially practical for printable
-        activities, classroom materials, clipart preparation and line art workflows.
-      </p>
+    <section id="usage-credits">
+      <h2>Usage & Credits</h2>
+      <p>EdgeWizard uses a credit-based system. You can try it daily for free, and only pay when you need more.</p>
     </section>
 
     <section id="faq">
       <h2>Frequently Asked Questions (FAQ)</h2>
 
-      <p><strong>What images work best for coloring pages?</strong><br />
-      EdgeWizard works best with images that have clear subjects and good contrast. Photos, illustrations
-      and clipart are ideal for creating clean, precise outlines and coloring pages.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          What images work best for coloring pages?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>EdgeWizard works best with images that have clear subjects and good contrast. Photos, illustrations and clipart are ideal for creating clean, precise outlines and coloring pages.</p>
+        </div>
+      </div>
 
-      <p><strong>How long does it take to convert an image?</strong><br />
-      Most images are converted into clean, precise outlines within a few seconds, depending on image
-      size and complexity.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          Is my image data secure?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. Your images are processed securely and are not stored after they are converted into outlines.</p>
+        </div>
+      </div>
 
-      <p><strong>Do I need to create an account?</strong><br />
-      Yes. A free account is required to use EdgeWizard and gives you access to daily free credits.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I use the generated outlines commercially?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. You retain full commercial rights to all outlines and coloring pages you create with EdgeWizard.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How long does it take to convert an image?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Most images are converted into clean, precise outlines within a few seconds, depending on image size and complexity.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Do I need to create an account?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. A free account is required to use EdgeWizard and gives you access to daily free credits.</p>
+        </div>
+      </div>
     </section>
 
     <section id="cta" class="cta-section">
@@ -458,6 +618,51 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    (async () => {
+      try {
+        const res = await fetch(
+          "https://edgewizard-backend-production.up.railway.app/public/metrics",
+          { cache: "no-store" }
+        );
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        const imagesEl = document.getElementById("ewImages");
+        const creditsEl = document.getElementById("ewCredits");
+        const noteEl = document.getElementById("ewStatsNote");
+
+        if (imagesEl) {
+          imagesEl.textContent = `${Number(data.images_total ?? 0).toLocaleString("de-CH")}+`;
+        }
+
+        if (creditsEl) {
+          creditsEl.textContent = `${Number(data.credits_spent_total ?? 0).toLocaleString("de-CH")}+`;
+        }
+
+        if (noteEl) {
+          noteEl.textContent = "Updated daily";
+        }
+      } catch (_) {
+        // silent fail
+      }
+    })();
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        faqItems.forEach(i => i.classList.remove('active'));
+
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>
